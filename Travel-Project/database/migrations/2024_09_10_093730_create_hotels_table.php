@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('stars')->check('stars BETWEEN 1 AND 5');
             $table->string('hotel_image')->nullable();
             $table->string('contact_number')->nullable();
+            $table->decimal('revenue', 10, 2)->default(0);
             $table->timestamps();
         });
     }

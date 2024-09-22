@@ -1,6 +1,6 @@
 @extends('Components.layout')
 @section('content')
-    <section class="vh-100 mt-5 mb-5">
+    <section class=" mt-5 mb-5">
         <div class="container h-auto">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-9">

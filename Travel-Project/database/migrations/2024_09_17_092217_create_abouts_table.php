@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('image1');
-            $table->string('image2');
+            $table->string('address');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('website');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

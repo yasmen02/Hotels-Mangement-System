@@ -60,13 +60,13 @@ class HotelsController extends Controller
         if ($request->hasFile('hotel_image')) {
             if ($hotel->hotel_image) {
                 Storage::delete('public/hotel_images/' . $hotel->hotel_image);
-            }else {
-            $path = $request->file('hotel_image')->store('images', 'public');
-            $validate['hotel_image'] = $path;
-        }} else {
-            $validate['hotel_image'] = null;
+            }
+            $validate['hotel_image'] = $request->file('hotel_image')->store('hotel_images', 'public');
+        } else {
+            $validate['hotel_image'] = $hotel->hotel_image; // Retain the existing image
         }
-       $hotel->update($validate);
+
+        $hotel->update($validate);
         return redirect()->route('hotels.index');
     }
     public function destroy($id){

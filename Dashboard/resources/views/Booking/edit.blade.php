@@ -1,8 +1,8 @@
 @extends('Components.layout')
 @section('content')
-    <section class="vh-100 mt-5 mb-5" >
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+    <section class=" mt-5 mb-5" >
+        <div class="container ">
+            <div class="row d-flex justify-content-center align-items-center ">
                 <div class="col-xl-10 col-lg-12 col-md-12">
                     <div class="card shadow-sm" style="border-radius: 15px;">
                         <div class="card-body">

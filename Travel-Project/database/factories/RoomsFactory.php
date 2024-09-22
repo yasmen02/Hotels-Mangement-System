@@ -19,7 +19,7 @@ class RoomsFactory extends Factory
     {
         return [
             'hotel_id' => $this->faker->numberBetween(1, 10),
-           'room_number' => $this->faker->numberBetween(1, 10),
+           'room_number' => $this->faker->randomDigit(),
             'room_type' => $this->faker->randomElement(['Single', 'Double', 'Suite', 'Deluxe']),
             'room_price' =>$this->faker->numberBetween(50.00, 500.00),
             'room_image'=>$this->faker->imageUrl(),

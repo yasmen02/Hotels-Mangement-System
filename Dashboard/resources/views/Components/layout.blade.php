@@ -37,11 +37,11 @@
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
             <a href="index.html" class="navbar-brand mx-4 mb-3">
-                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASH ADMIN</h3>
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
-                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle" src="{{asset('images/profile.png')}}" alt="" style="width: 40px; height: 40px;">
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
@@ -49,47 +49,103 @@
                     <span>Admin</span>
                 </div>
             </div>
-            <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Users</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('users.index')}}" class="dropdown-item">All Users</a>
-                        <a href="{{route('users.create')}}" class="dropdown-item">Add New Users</a>
+            <div class="sidebar pe-4 pb-3">
+                <nav class="navbar bg-light navbar-light">
+                    <a href="index.html" class="navbar-brand mx-4 mb-3">
+                        <h3 class="text-primary">
+                            <i class="fas fa-hashtag me-2" style="color: #009CFF;"></i>
+                            DASH ADMIN
+                        </h3>
+                    </a>
+                    <div class="d-flex align-items-center ms-4 mb-4">
+                        <div class="position-relative">
+                            <img class="rounded-circle" src="{{asset('images/profile.png')}}" alt="" style="width: 40px; height: 40px;">
+                            <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0">Yasmen Zuheer</h6>
+                            <span>Admin</span>
+                        </div>
                     </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Hotels</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('hotels.index')}}" class="dropdown-item">All Hotels</a>
-                        <a href="{{route('hotels.create')}}" class="dropdown-item">Add New Hotel</a>
-                    </div>
-                </div>
-                <a href="{{route('booking.index')}}" class="nav-item nav-link"><i class="fa fa-th me-2"></i> Booking</a>
+                    <div class="navbar-nav w-100">
+                        <a href="/" class="nav-item nav-link active">
+                            <i class="fas fa-tachometer-alt me-2" style="color: #009CFF;"></i>
+                            Dashboard
+                        </a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fas fa-users me-2" style="color: #009CFF;"></i>
+                                Users
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{route('users.index')}}" class="dropdown-item">All Users</a>
+                                <a href="{{route('users.create')}}" class="dropdown-item">Add New Users</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fas fa-hotel me-2" style="color: #009CFF;"></i>
+                                Hotels
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{route('hotels.index')}}" class="dropdown-item">All Hotels</a>
+                                <a href="{{route('hotels.create')}}" class="dropdown-item">Add New Hotel</a>
+                            </div>
+                        </div>
+                        <a href="{{route('booking.index')}}" class="nav-item nav-link">
+                            <i class="fas fa-book me-2" style="color: #009CFF;"></i>
+                            Booking
+                        </a>
 
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Blogs & Article</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('blogs.index')}}" class="dropdown-item">All Blogs</a>
-                        <a href="{{route('blogs.create')}}" class="dropdown-item">Add New Blog</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Banners</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('banners.index')}}" class="dropdown-item">All Banners</a>
-                        <a href="{{route('banners.create')}}" class="dropdown-item">Add New Banner</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="{{route('abouts.index')}}" class="dropdown-item">Home & About Pages</a>
-                        <a href="{{route('contacts.index')}}" class="dropdown-item">Contact Pages</a>
-                    </div>
-                </div>
-                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Login</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fas fa-pencil-alt me-2" style="color: #009CFF;"></i>
+                                Blogs & Article
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{route('blogs.index')}}" class="dropdown-item">All Blogs</a>
+                                <a href="{{route('blogs.create')}}" class="dropdown-item">Add New Blog</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fas fa-images me-2" style="color: #009CFF;"></i>
+                                Banners
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{route('banners.index')}}" class="dropdown-item">All Banners</a>
+                                <a href="{{route('banners.create')}}" class="dropdown-item">Add New Banner</a>
+                            </div>
+                        </div>
+                        <a href="{{route('payment.index')}}" class="nav-item nav-link">
+                            <i class="fas fa-credit-card me-2" style="color: #009CFF;"></i>
+                            Payment
+                        </a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="far fa-file-alt me-2" style="color: #009CFF;"></i>
+                                Pages
+                            </a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="{{route('abouts.index')}}" class="dropdown-item">Home & About Pages</a>
+                                <a href="{{route('contacts.index')}}" class="dropdown-item">Contact Pages</a>
+                            </div>
+                        </div>
 
+                        @guest('admin')
+                            <a href="{{ route('login') }}" class="nav-item nav-link">
+                                <i class="fas fa-sign-in-alt me-2" style="color: #009CFF;"></i>
+                                Login
+                            </a>
+                        @endguest
+                        @auth('admin')
+                            <a href="{{route('logout')}}" class="nav-item nav-link">
+                                <i class="fas fa-sign-in-alt me-2" style="color: #009CFF;"></i>
+                                Logout
+                            </a>
+                        @endauth
+                    </div>
+                </nav>
             </div>
         </nav>
     </div>
@@ -112,66 +168,24 @@
                         <span class="d-none d-lg-inline-flex">Message</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
+                        @foreach($messages as $message)
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="{{asset('images/profile.png')}}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">{{ $message->name }} sent you a message</h6>
+                                        <small>{{ $message->created_at->diffForHumans() }}</small> <!-- Displays time ago -->
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                    <small>15 minutes ago</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item text-center">See all message</a>
+                            </a>
+                            <hr class="dropdown-divider">
+                        @endforeach
+                        <a href="{{route('contacts.index')}}" class="dropdown-item text-center">See all message</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fa fa-bell me-lg-2"></i>
-                        <span class="d-none d-lg-inline-flex">Notificatin</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">Profile updated</h6>
-                            <small>15 minutes ago</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">New user added</h6>
-                            <small>15 minutes ago</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">Password changed</h6>
-                            <small>15 minutes ago</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item text-center">See all notifications</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle me-lg-2" src="{{asset('images/profile.png')}}" alt="" style="width: 40px; height: 40px;">
                         <span class="d-none d-lg-inline-flex">Yasmen Zuheer</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -187,21 +201,7 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 </div>
-{{--<div class=" container-fluid pt-4 px-4">--}}
-{{--    <div class="bg-light rounded-top p-4">--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-12 col-sm-6 text-center text-sm-start">--}}
-{{--                &copy; <a href="#">Your Site Name</a>, All Right Reserved.--}}
-{{--            </div>--}}
-{{--            <div class="col-12 col-sm-6 text-center text-sm-end">--}}
-{{--                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->--}}
-{{--                Designed By <a href="https://htmlcodex.com">HTML Codex</a>--}}
-{{--                </br>--}}
-{{--                Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
+
 <!-- JavaScript Libraries -->
 <script src="{{asset('https://code.jquery.com/jquery-3.4.1.min.js')}}"></script>
 <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js')}}"></script>

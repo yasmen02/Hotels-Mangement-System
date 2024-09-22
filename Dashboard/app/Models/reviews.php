@@ -15,4 +15,8 @@ class reviews extends Model
         'comment',
         'review_date'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

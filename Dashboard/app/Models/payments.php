@@ -9,9 +9,10 @@ class payments extends Model
 {
     use HasFactory;
      protected $fillable=[
+         'user_id',
          'booking_id',
          'amount',
          'payment_date',
-         'payment_method'
+         'transaction_id'
      ];
 }

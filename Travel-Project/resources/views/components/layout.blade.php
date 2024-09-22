@@ -22,24 +22,63 @@
 </head>
 <body >
 <div class="min-h-full">
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">Harbor<span>lights</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#00" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg> Menu
             </button>
 
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link></li>
-                    <li class="nav-item"><x-nav-link href="{{route('hotels')}}" :active="request()->is('room')">Hotels</x-nav-link></li>
+            <div class="collapse navbar-collapse justify-content-end" id="ftco-nav">
+                <div>
+                <ul class="navbar-nav ml-5 ">
+                    <li class="nav-item active" ><x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link></li>
+                    <li class="nav-item"><x-nav-link href="{{route('hotels.index')}}" :active="request()->is('room')">Hotels</x-nav-link></li>
                     <li class="nav-item"><x-nav-link href="/about" :active="request()->is('about')">About us</x-nav-link></li>
                     <li class="nav-item"><x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link></li>
                     <li class="nav-item"><x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link></li>
+                    @auth()
                     <li class="nav-item"><x-nav-link href="{{route('cart')}}" :active="request()->is('carts')">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20" width="22.5" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                     </x-nav-link></li>
+                    @endauth
                 </ul>
+                </div>
+                <div>
+                @guest()
+                    <button class="submit-btn btn-sm"><a class="text-white" href="{{route('login')}}">login</a></button>
+                @endguest
+                @auth()
+                        <li class="nav-item dropdown" style="list-style: none;">
+                            <a
+                                class="nav-link dropdown-toggle d-flex align-items-center"
+                                href="#"
+                                id="navbarDropdownMenuLink"
+                                role="button"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <img
+                                    src="{{asset('images/profile.png')}}"
+                                    class="rounded-circle"
+                                    height="30"
+                                    alt=""
+                                    loading="lazy"
+                                />
+                            </a>
+                            <ul class="dropdown-menu justify-content-center" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{route('myprofile.index')}}">My profile</a></li>
+                                <li class="dropdown-item">
+                                        <form method="POST" action="{{route('logout.destroy')}}"  >
+                                            @csrf
+                                            <button class="submit-btn btn-sm" type="submit">Logout</button>
+                                        </form>
+                                </li>
+                            </ul>
+                        </li>
+
+                @endauth
+            </div>
             </div>
         </div>
     </nav>

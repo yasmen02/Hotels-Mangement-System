@@ -1,19 +1,19 @@
 @extends('Components.layout')
 @section('content')
-    <div class="hero-wrap h-30" style="background-image: url('{{ Storage::url( $hotel->hotel_image) }}'); background-size: cover; background-position: center;">
+    <div class="hero-wrap h-30" style="background-image: url('{{asset( $hotel->hotel_image) }}'); background-size: cover; background-position: center;">
     <div class="overlay"></div>
         <div class="container h-100">
             <div class="row no-gutters h-100 d-flex align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center d-flex flex-column align-items-center justify-content-center">
                     <div class="text">
-                        <p class="breadcrumbs mb-2"><span class="mr-2 "><a class="text-black-50" href="index.html">Home</a></span></p>
                         <h1 class="mb-4 bread text-white">{{$hotel->name}}</h1>
+{{--                        file:///C:/Users/LENOVO/OneDrive/Desktop/hotels-project/Dashboard/storage/app/public/hotel_images/pc7CDiqQWPwtLe09zsMjiS3fKL1O4mkseSMERlFs.jpg--}}
+                        <img src="{{asset('storage/app/public/hotel_images/pc7CDiqQWPwtLe09zsMjiS3fKL1O4mkseSMERlFs.jpg')}}" alt="Hotel Image" />{{--                        <img src="{{ asset('storage/app/public/hotel_images/pc7CDiqQWPwtLe09zsMjiS3fKL1O4mkseSMERlFs.jpg') }}" alt="" title="" />--}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <section class="hotel-details mt-3 h-100">
         <div class="container">
             <div class="row">

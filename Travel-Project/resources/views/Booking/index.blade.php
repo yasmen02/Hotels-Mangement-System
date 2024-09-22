@@ -1,7 +1,7 @@
 @extends('components.layout')
 @section('content')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const pricePerNightInput = document.getElementById('price_per_night');
             const checkInDateInput = document.getElementById('check_in_date');
             const checkOutDateInput = document.getElementById('check_out_date');
@@ -54,36 +54,41 @@
                         <div class="form-header">
                             <h1>Make your reservation</h1>
                         </div>
-                        <form action="{{route('booking.store',['slug' => $hotel->slug, 'id' => $room->id])}}" method="POST">
+                        <form action="{{route('booking.store',['slug' => $hotel->slug, 'id' => $room->id])}}"
+                              method="POST">
                             @csrf
                             <div class="form-group">
                                 <input type="hidden" name="room_id" value="{{$room->id}}">
-                                <input type="hidden" name="user_id" value="{{$user}}">
+                                <input type="hidden" name="user_id" value="{{$user->id}}">
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <span class="form-label">No of Room</span>
-                                        <input class="form-control" type="text" id="room_id" name="room_id" value="{{$room->id}}" readonly>
+                                        <input class="form-control" type="text" id="room_id" name="room_id"
+                                               value="{{$room->id}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <span class="form-label">Type of Room</span>
-                                        <input class="form-control" type="text" id="room_type" name="room_type" value="{{$room->room_type}}" readonly>
+                                        <input class="form-control" type="text" id="room_type" name="room_type"
+                                               value="{{$room->room_type}}" readonly>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="date" id="check_in_date" name="check_in_date" required>
+                                        <input class="form-control" type="date" id="check_in_date" name="check_in_date"
+                                               required>
                                         <span class="form-label">Check In</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="date" id="check_out_date" name="check_out_date" required>
+                                        <input class="form-control" type="date" id="check_out_date"
+                                               name="check_out_date" required>
                                         <span class="form-label">Check Out</span>
                                     </div>
                                 </div>
@@ -122,26 +127,30 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <span class="form-label">Price of Room</span>
-                                        <input class="form-control" type="text" id="price_per_night" name="price_per_night" value="${{$room->room_price}}" readonly>
+                                        <input class="form-control" type="text" id="price_per_night"
+                                               name="price_per_night" value="${{$room->room_price}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <span class="form-label">Total Price</span>
-                                        <input class="form-control" type="text" id="total_price" name="total_price" value="0.00" readonly>
+                                        <input class="form-control" type="text" id="total_price" name="total_price"
+                                               value="0.00" readonly>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="email" name="email" placeholder="Enter your Email" required>
+                                        <input class="form-control" type="email" name="email"
+                                               placeholder="Enter your Email" required>
                                         <span class="form-label">Email</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="tel" name="phone" placeholder="Enter your Phone" required>
+                                        <input class="form-control" type="tel" name="phone"
+                                               placeholder="Enter your Phone" required>
                                         <span class="form-label">Phone</span>
                                     </div>
                                 </div>

@@ -10,7 +10,7 @@
                             <div class="card">
                                 <div class="card-body p-0">
                                     <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
-                                         style="position: relative; height: 700px">
+                                         style="position: relative;">
                                         <table class="table table-striped mb-0">
                                             <thead class="text-black-50" style="background-color: #2976e3;">
                                             <tr>

@@ -2,7 +2,7 @@
 @section('content')
     <section class="intro mt-5 mb-5">
         <h1 class="text-black-50 mb-4"></h1>
-        <div class="bg-image h-100" style="background-color: #f5f7fa;">
+        <div class="bg-image " >
             <div class="mask d-flex align-items-center h-100">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -10,7 +10,7 @@
                             <div class="card">
                                 <div class="card-body p-0">
                                     <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
-                                         style="position: relative; height: 700px">
+                                         style="position: relative;">
                                         <table class="table table-striped mb-0">
                                             <thead class="text-black-50" style="background-color: #2976e3;">
                                             <tr>

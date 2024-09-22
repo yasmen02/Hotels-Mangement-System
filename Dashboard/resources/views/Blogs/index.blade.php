@@ -1,16 +1,15 @@
 @extends('Components.layout')
 @section('content')
     <section class="intro mt-5 mb-5">
-
-        <div class="bg-image h-100" >
-            <div class="mask d-flex flex-column align-items-center h-100">
+        <div class="bg-image" >
+            <div class="mask d-flex flex-column align-items-center ">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body p-0">
                                     <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
-                                         style="position: relative; height: 700px">
+                                         style="position: relative;">
                                         <table class="table table-striped mb-0">
                                             <thead class="text-black-50" style="background-color: #2976e3;">
                                             <tr>

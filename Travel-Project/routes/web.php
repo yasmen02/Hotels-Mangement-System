@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesCotroller;
-use App\Http\Controllers\HotelCotroller;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RegisteredUser;
+use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\MyprofileController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +26,35 @@ Route::group(['namespaces'=>'Pages'],function(){
     Route::get('/contact',[PagesCotroller::class,'contact'])->name('contact');
     Route::get('/blog',[PagesCotroller::class,'blog'])->name('blog');
 });
-Route::get('/hotels',[HotelCotroller::class,'index'])->name('hotels');
-Route::get('/hotels/{slug}',[HotelCotroller::class,'show'])->name('hotels.show');
 
-Route::get('/hotels/{slug}/{id}',[BookingController::class,'index'])->name('booking');
+Route::post('/contact',[ContactController::class,'store'])->name('contact.store');
+
+Route::resource('hotels', HotelController::class)->only(['index', 'show']);
+Route::resource('booking', BookingController::class);
+
+Route::get('/booking/{slug}/{id}',[BookingController::class,'index'])->name('booking.index');
 Route::post('/hotels/{slug}/{id}',[BookingController::class,'store'])->name('booking.store');
 Route::get('/carts',[BookingController::class,'cart'])->name('cart');
-Route::get('/carts/destroy/{id}',[BookingController::class,'destroy'])->name('cart.destroy');
-Route::get('/booking/{id}/edit',[BookingController::class,'edit'])->name('cart.edit');
-Route::put('/booking/{id}/update',[BookingController::class,'update'])->name('booking.update');
 
-Route::get('/payment/{id}',[BookingController::class,'payment'])->name('payment');
 
+Route::get('/payment',[BookingController::class,'payment'])->name('payment.index');
+Route::post('/payment',[BookingController::class,'paymentstore'])->name('payment.store');
+
+Route::group(['namespace'=>'Users'],function(){
+    Route::get('register', [RegisteredUser::class,'create'])->name('register');
+    Route::post('register', [RegisteredUser::class,'store'])->name('register.store');
+    Route::get('password/forgot', [RegisteredUser::class, 'showForgetPasswordForm'])->name('password.request');
+    Route::post('password/email', [RegisteredUser::class, 'forgetPassword'])->name('password.email');
+    Route::get('password/reset/{token}', [RegisteredUser::class, 'showResetForm'])->name('password.reset');
+});
+
+Route::get('/login',[AdminController::class,'create'])->name('login');
+Route::post('/login',[AdminController::class,'store'])->name('login.store');
+
+Route::post('/logout',[AdminController::class,'destroy'])->name('logout.destroy');
+
+Route::resource('reviews',ReviewsController::class);
+
+Route::get('/myprofile',[MyprofileController::class,'index'])->name('myprofile.index');
+Route::get('/myprofile/edit',[MyprofileController::class,'edit'])->name('myprofile.edit');
+Route::put('/myprofile/edit',[MyprofileController::class,'update'])->name('myprofile.update');

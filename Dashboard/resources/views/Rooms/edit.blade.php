@@ -1,6 +1,6 @@
 @extends('Components.layout')
 @section('content')
-    <section class="vh-100 mt-5 mb-5" style="background-color: #f8f9fa;">
+    <section class=" mt-5 mb-5" >
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-8 col-lg-10 col-md-12">

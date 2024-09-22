@@ -1,8 +1,14 @@
 @extends('Components.layout')
 @section('content')
     <section class="intro mt-5 mb-5 ">
+        <div class="mw-50 btn  container p-2 m-2 d-flex justify-content-lg-start text-center inherit-margin">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" height="22" width="22" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#74C0FC" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>
+                <a href="{{route('abouts.create')}}" class="">Add New Details</a>
+            </div>
+        </div>
         <h1 class="text-black mb-4 text-center">Details of About Page</h1>
-        <div class="bg-image h-100" >
+        <div class="bg-image " >
             <div class="mask d-flex align-items-center ">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -17,8 +23,11 @@
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Title</th>
                                                 <th scope="col">Description</th>
-                                                <th scope="col">Image1</th>
-                                                <th scope="col">Image2</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Phone</th>
+                                                <th scope="col">email</th>
+                                                <th scope="col">website</th>
+                                                <th scope="col">image</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                             </thead>
@@ -28,8 +37,11 @@
                                                     <td>{{$about->id}}</td>
                                                     <td>{{$about->title}}</td>
                                                     <td>{{$about->description}}</td>
-                                                    <td>{{$about->image1}}</td>
-                                                    <td>{{$about->image2}}</td>
+                                                    <td>{{$about->address}}</td>
+                                                    <td>{{$about->phone}}</td>
+                                                    <td>{{$about->email}}</td>
+                                                    <td>{{$about->website}}</td>
+                                                    <td>{{$about->image}}</td>
                                                     <td class=" d-flex ">
                                                         <!-- Link for edit action -->
                                                         <button class="btn btn-primary btn-sm">
