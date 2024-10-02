@@ -23,7 +23,6 @@ class RoomsController extends Controller
         return view('Rooms/create', compact('hotel'));
     }
     public function store(Request $request){
-//        dd($request->all());
 
         $validated = $request->validate([
             'hotel_id' => 'required|exists:hotels,id',
@@ -34,11 +33,20 @@ class RoomsController extends Controller
             'room_type' => 'required|string',
             'room_status' => 'required|string',
         ]);
+        $roomExists = Rooms::where('hotel_id', $validated['hotel_id'])
+            ->where('room_number', $validated['room_number'])
+            ->exists();
+        if ($roomExists) {
+            return back()->withErrors(['room_number' => 'The room number already exists for this hotel.']);
+        }
         $validated['room_image'] = null;
         if ($request->hasFile('room_image')) {
             $file = $request->file('room_image');
-            $validated['room_image']= $file->store('room_images', 'public');
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('images/room_images'), $file_name, 'public');
+            $validated['room_image'] = $file_name;
         }
+
         Rooms::create($validated);
         $hotel = Hotels::find($validated['hotel_id']);
         $slug = $hotel->slug;
@@ -58,14 +66,15 @@ class RoomsController extends Controller
             'room_image' => 'required',
             'room_status' => 'required',
         ]);
-        $validatedData['room_image'] = null;
         if ($request->hasFile('room_image')) {
-            if ($room->room_image) {
-                Storage::delete('public/room_images/' . $room->room_image);
-            }else {
-                $file = $request->file('room_image');
-                $validatedData['room_image'] = $file->store('room_images', 'public');
-            } }
+            $file = $request->file('room_image');
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('images/room_images'), $file_name);
+            $validatedData['room_image'] = $file_name;
+        } else {
+            // No new image is uploaded, keep the old image
+            $validatedData['room_image'] = $room->room_image; // Preserve the old image
+        }
         $room->update($validatedData);
         $hotel = Hotels::findOrFail($room->hotel_id);
         $slug = $hotel->slug;

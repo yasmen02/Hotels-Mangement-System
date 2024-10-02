@@ -32,48 +32,51 @@
 </head>
 
 <body>
+@include('message')
+<div class="container-xxl bg-light position-relative d-flex p-0 justify-content-center">
     <div class="flex h-screen mb-5 mt-5">
-        <div class="container-fluid bg-light w-75 d-flex align-items-center justify-content-center">
-            <div class="col-md-6 p-4">
+        <div class="container-fluid bg-white shadow rounded d-flex align-items-center justify-content-center">
+            <div class="col-md-8 col-lg-12 p-5">
                 <h1 class="text-center display-4 mb-4">Admin Login</h1>
-                <div class="mb-4">
-                    <p class="text-muted">Don't have an account?
-                        <a href="{{route('register')}}" class="text-primary">Sign Up</a>
-                    </p>
-                </div>
+
                 <form action="{{ route('login.store') }}" method="POST" class="mb-4">
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
                         @error('email')
-                        {{$message}}
+                        <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" required>
                         @error('password')
-                        {{$message}}
+                        <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <!-- Optional: Include fields for role and status if needed for the login process -->
-                    <input type="hidden" name="role" value="admin"> <!-- If role is fixed for admins -->
-                    <input type="hidden" name="status" value="active"> <!-- Set status as active -->
+                    <input type="hidden" name="role" value="admin">
+                    <input type="hidden" name="status" value="active">
 
                     <div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
                     </div>
                 </form>
                 <div class="text-center">
-                    <p class="text-muted">Forgot password?
-                        <a href="" class="text-dark">Reset Password</a>
+                    <p class="text-muted">register
+                        <a href="{{ route('admin.create') }}" class="text-primary">admin.create</a>
+                    </p>
+                </div>
+                <div class="text-center">
+                    <p class="text-muted">Forgot your password?
+                        <a href="{{ route('resetPassword') }}" class="text-primary">Reset Password</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- JavaScript Libraries -->
     <script src="{{asset('https://code.jquery.com/jquery-3.4.1.min.js')}}"></script>

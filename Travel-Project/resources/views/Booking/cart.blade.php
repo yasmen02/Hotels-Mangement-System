@@ -14,6 +14,7 @@
             </div>
         </div>
     </div>
+    @include('message')
     @if($cart_items->isEmpty())
             <div class="container mb-5 mt-5">
                 <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
@@ -29,6 +30,7 @@
         <div class="container mt-5 mb-5">
             <div class="d-flex justify-content-center row">
                 @foreach($cart_items as $item)
+                    @if($item->status==='cancelled')
                     <div class="col-md-10">
                         <div class="row p-2 bg-white border rounded mt-2">
                             <div class="col-md-3 mt-1">
@@ -57,7 +59,7 @@
                                     <span>no of children: {{$item->no_of_children}}</span>
                                 </div>
                                 <div class="d-flex flex-column mt-4">
-                                    <form method="POST" action="{{route('booking.destroy', $item->id)}}">
+                                    <form method="POST" class="submit-btn btn-sm d-flex justify-content-center" action="{{route('booking.destroy', $item->id)}}">
                                         @csrf
                                         @method('DELETE')
                                         <button class="submit-btn btn-sm" type="submit" style="border:none;">
@@ -77,7 +79,9 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 @endforeach
+
             </div>
         </div>
         <div class="d-flex justify-content-center row m-3">

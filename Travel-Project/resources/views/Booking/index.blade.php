@@ -49,11 +49,17 @@
     <div id="booking" class="section">
         <div class="section-center">
             <div class="container">
-                <div class="row">
-                    <div class="booking-form">
+                <div class="row ">
+                    <div class="booking-form ">
                         <div class="form-header">
                             <h1>Make your reservation</h1>
                         </div>
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                            <a href="{{route('availableDays',$room->id)}}"> Show Available Days </a>
+                        @endif
                         <form action="{{route('booking.store',['slug' => $hotel->slug, 'id' => $room->id])}}"
                               method="POST">
                             @csrf
@@ -81,22 +87,28 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" type="date" id="check_in_date" name="check_in_date"
-                                               required>
+                                        >
                                         <span class="form-label">Check In</span>
+                                        @error('check_in_date')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" type="date" id="check_out_date"
-                                               name="check_out_date" required>
+                                               name="check_out_date" >
                                         <span class="form-label">Check Out</span>
+                                        @error('check_out_date')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select class="form-control" id="no_of_adults" name="no_of_adults" required>
+                                        <select class="form-control" id="no_of_adults" name="no_of_adults" >
                                             <option value="" selected hidden>No of Adults</option>
                                             <option>1</option>
                                             @if($room->room_type!='Single')
@@ -106,11 +118,14 @@
                                             @endif
                                         </select>
                                         <span class="form-label">Adults</span>
+                                        @error('no_of_adults')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select class="form-control" id="no_of_children" name="no_of_children" required>
+                                        <select class="form-control" id="no_of_children" name="no_of_children" >
                                             <option value="" selected hidden>No of Children</option>
                                             <option>0</option>
                                             @if($room->room_type!='Single')
@@ -120,6 +135,9 @@
                                             @endif
                                         </select>
                                         <span class="form-label">Children</span>
+                                        @error('no_of_children')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -143,15 +161,21 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" type="email" name="email"
-                                               placeholder="Enter your Email" required>
+                                               placeholder="Enter your Email" >
                                         <span class="form-label">Email</span>
+                                        @error('email')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input class="form-control" type="tel" name="phone"
-                                               placeholder="Enter your Phone" required>
+                                               placeholder="Enter your Phone" >
                                         <span class="form-label">Phone</span>
+                                        @error('phone')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

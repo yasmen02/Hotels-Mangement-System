@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN </title>
+    <title>DASHADMIN </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -37,7 +37,7 @@
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
             <a href="index.html" class="navbar-brand mx-4 mb-3">
-                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASH ADMIN</h3>
+                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHADMIN</h3>
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
@@ -63,7 +63,9 @@
                             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                         </div>
                         <div class="ms-3">
-                            <h6 class="mb-0">Yasmen Zuheer</h6>
+                            @if(Auth::guard('admin')->check())
+                                <h6 class="mb-0">{{ Auth::guard('admin')->user()->name }}</h6>
+                            @endif
                             <span>Admin</span>
                         </div>
                     </div>
@@ -186,11 +188,12 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <img class="rounded-circle me-lg-2" src="{{asset('images/profile.png')}}" alt="" style="width: 40px; height: 40px;">
-                        <span class="d-none d-lg-inline-flex">Yasmen Zuheer</span>
+                        @if(Auth::guard('admin')->check())
+                            <span class="d-none d-lg-inline-flex">{{ Auth::guard('admin')->user()->name }}</span>
+                        @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">My Profile</a>
-                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="{{route('profile')}}" class="dropdown-item">My Profile</a>
                         <a href="#" class="dropdown-item">Log Out</a>
                     </div>
                 </div>

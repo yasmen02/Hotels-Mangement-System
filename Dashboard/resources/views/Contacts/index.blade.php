@@ -1,7 +1,7 @@
 @extends('Components.layout')
 @section('content')
     <section class="intro mt-5 mb-5 ">
-        <h1 class="text-black mb-4 text-center">Details of Contact Page</h1>
+        <h1 class="text-black mb-4 text-center">View  Contact </h1>
         <div class="bg-image" >
             <div class="mask d-flex align-items-center ">
                 <div class="container">
@@ -31,7 +31,6 @@
                                                     <td>{{$contact->email}}</td>
                                                     <td>{{$contact->phone}}</td>
                                                     <td>{{$contact->message}}</td>
-
                                                 </tr>
                                             @endforeach
                                             </tbody>

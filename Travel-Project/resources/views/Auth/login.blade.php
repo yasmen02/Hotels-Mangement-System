@@ -1,6 +1,6 @@
 @extends('components.layout')
 @section('content')
-    <div class="flex h-screen mb-5 mt-5">
+    <div class="flex h-screen p-5">
         <div class="container-fluid bg-light d-flex align-items-center justify-content-center">
             <div class="col-md-6 p-4">
                 <h1 class="text-center display-4 mb-4">Login</h1>
@@ -13,7 +13,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                        <input type="email" class="form-control" id="email" name="email" value="">
                         <x-form-error name="email" />
                     </div>
                     <div class="mb-3">

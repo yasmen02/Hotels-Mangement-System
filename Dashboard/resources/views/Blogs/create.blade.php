@@ -56,27 +56,12 @@
                                     <h6 class="mb-0">URL</h6>
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                    <input type="url" name="url" class="form-control form-control-lg" />
+                                    <input type="text" name="url" class="form-control form-control-lg" />
                                     @error('url')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-
-                            <hr class="mx-n3">
-
-                            <div class="row align-items-center py-3">
-                                <div class="col-md-3 ps-5">
-                                    <h6 class="mb-0">Author</h6>
-                                </div>
-                                <div class="col-md-9 pe-5">
-                                    <input type="text" name="author" class="form-control form-control-lg" />
-                                    @error('author')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             <hr class="mx-n3">
 
                             <div class="px-5 py-4">

@@ -20,12 +20,12 @@
                     <span class="subheading">Harbor Lights Hotels</span>
                 </div>
             </div>
+
             <div class="row no-gutters">
                 @foreach($hotels as $hotel)
                     <div class="col-lg-6">
                         <div class="room-wrap d-md-flex ftco-animate">
-                            <a href="#" class="img"
-                               style="background-image: url('https://images.pexels.com/photos/3285725/pexels-photo-3285725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"></a>
+                            <a href="#" class="img" style="background-image: url('http://127.0.0.1:8001/images/hotel_images/{{ $hotel->hotel_image }}');"></a>
                             <div class="half left-arrow d-flex align-items-center">
                                 <div class="text p-4 text-center">
                                     <p class="star mb-0">

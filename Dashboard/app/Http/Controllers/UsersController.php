@@ -12,10 +12,6 @@ class UsersController extends Controller
         return view('users.index', compact('users'));
     }
 
-    public function show($id){
-        $user = User::where('id', $id)->firstOrFail();
-        return view('Users/show', compact('user'));
-    }
     public function create(){
         return view('Users/create');
     }
@@ -31,18 +27,16 @@ class UsersController extends Controller
         User::create($validatedData);
         return redirect()->route('users.index');
     }
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user=User::where('id', $id)->firstOrFail();
         return view('Users/edit',compact('user'));
     }
-    public function update(Request $request, $id){
-        $user = User::findOrFail($id);
+    public function update(Request $request,User $user){
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
             'phone_number' => 'required',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
             'confirm_password' => 'required|same:password',
         ]);
        $user->update($validatedData);

@@ -1,12 +1,13 @@
 @extends('components.layout')
 @section('content')
+
     <div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
                     <div class="text">
-                        <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact Us</span>
+                        <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>Contact Us</span>
                         </p>
                         <h1 class="mb-4 bread">Contact Us</h1>
                     </div>
@@ -25,22 +26,26 @@
                 <div class="w-100"></div>
                 <div class="col-md-3 d-flex">
                     <div class="info rounded bg-white p-4">
-                        <p><span>Address:</span></p>
+                        <span>Address:</span>
+                        <p>{{$about->address}}</p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info rounded bg-white p-4">
-                        <p><span>Phone:</span> <a href="tel://1234567920">+ </a></p>
+                        <span>Phone:</span>
+                        <p> <a href="tel://1234567920">+{{$about->phone}} </a></p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="info rounded bg-white p-4">
-                        <p><span>Email:</span> <a href="mailto:info@yoursite.com"></a></p>
+                        <span class="text-black-50">Email:</span>
+                        <p> <a href="mailto:info@yoursite.com"></a>{{$about->email}}</p>
                     </div>
                 </div>
-                <div class="col-md-3 d-flex">
-                    <div class="info rounded bg-white p-4">
-                        <p><span>Website</span> <a href="#"></a></p>
+                <div class="col-md-3 d-flex ">
+                    <div class="info rounded bg-white p-4 d-flex flex-column">
+                        <span>Website:</span>
+                        <p> <a href="#"></a>{{$about->website}}</p>
                     </div>
                 </div>
             </div>
@@ -85,4 +90,27 @@
             </div>
         </div>
     </section>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        navigator.geolocation.watchPosition(success,error);
+        function success(pos){
+            const lat  = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            const accuracy = pos.coords.accuracy;
+            L.marker([lat,lng]).addTo(map);
+            L.circle([lat,lng],{ radius:accuracy}).addTo(map);
+        }
+        function error(err){
+            if(err.code ===1){
+                alert('please allow geolocation access');
+            }else{
+                alert('cannot get current location');
+            }
+        }
+    </script>
 @endsection

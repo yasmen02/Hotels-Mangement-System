@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('no_of_adults');
             $table->integer('no_of_children');
             $table->decimal('total_price', 10, 2);
-            $table->enum('status', ['booked', 'cancelled'])->default('booked');
+            $table->enum('status', ['booked', 'cancelled'])->default('cancelled');
             $table->timestamps();
         });
     }

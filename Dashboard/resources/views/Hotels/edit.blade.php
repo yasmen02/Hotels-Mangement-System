@@ -1,8 +1,8 @@
 @extends('Components.layout')
 @section('content')
-    <section class="vh-100 mt-5 mb-5" style="background-color: #ffffff;">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+    <section class=" mt-5 mb-5" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center ">
                 <div class="col-xl-9">
                     <h1 class="text-black-50 mb-4">Edit {{$hotel->slug}}</h1>
                     <form action="{{route('hotels.update',$hotel->id)}}" method="POST" class="card" style="border-radius: 15px;" enctype="multipart/form-data">
@@ -55,6 +55,7 @@
                                     <h6 class="mb-0">Hotel Image</h6>
                                 </div>
                                 <div class="col-md-9 pe-5">
+                                    <img src="{{ asset('images/hotel_images/' . $hotel->hotel_image) }}" alt="Current Image" class="img-fluid mb-2" style="max-width: 300px;" />
                                     <input type="file" name="hotel_image" value="{{$hotel->hotel_image}}" class="form-control form-control-lg"/>
                                     @error('hotel_image')
                                     <span class="text-danger">{{ $message }}</span>

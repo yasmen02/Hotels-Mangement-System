@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Admin  extends Authenticatable
+{
+    use HasFactory;
+    protected $fillable=[
+        'name',
+        'email',
+        'password',
+        'role',
+        'status',
+    ];
+    protected $guard = 'admin';
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value); // Or Hash::make($value);
+    }
+    public function blogs(){
+        return $this->hasMany(blogs::class);
+    }
+}

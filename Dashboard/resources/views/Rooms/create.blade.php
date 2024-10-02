@@ -15,6 +15,7 @@
                                     <label for="room_number" class="form-label">Room Number</label>
                                     <input type="number" id="room_number" name="room_number"
                                            value="" class="form-control form-control-lg" />
+                                    @include('message')
                                     @error('room_number')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror

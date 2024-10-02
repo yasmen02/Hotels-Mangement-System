@@ -23,4 +23,8 @@ class Rooms extends Model
     public function banners(){
         return $this->hasMany(Banners::class);
     }
+    public  function booking()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

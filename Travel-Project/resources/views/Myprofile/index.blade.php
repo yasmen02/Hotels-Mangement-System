@@ -59,7 +59,7 @@
                 <div class="transaction-list">
                     @if($transactions->isEmpty())
                         <p class="text-muted">No transactions found.</p>
-{{--                    @else--}}
+                    @else
                         <table class="table">
                             <thead>
                             <tr>

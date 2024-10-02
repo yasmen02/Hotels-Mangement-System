@@ -19,17 +19,20 @@ class PagesCotroller extends Controller
         $reviews = Reviews::orderBy('created_at', 'desc')->limit(3)->get();
         return view('Pages/welcome',compact('blogs','banners','about','reviews'));
     }
-    public function about(){
+    public function about()
+    {
         $about = About::first();
-        return view('Pages/about',compact('about'));
+        $reviews = Reviews::orderBy('created_at', 'desc')->limit(3)->get();
+        return view('Pages/about',compact('about','reviews'));
     }
-    public function contact(){
-//        $contact = Contact::first();
-        return view('Pages/contact');
+    public function contact()
+    {
+        $about = About::first();
+        return view('Pages/contact',compact('about'));
     }
-    public function blog(){
-        $blogs=Blogs::orderBy('created_at', 'desc')->paginate(6);
-
+    public function blog()
+    {
+        $blogs=Blogs::with('admin')->get();
         return view('Pages/blog',compact('blogs'));
     }
 

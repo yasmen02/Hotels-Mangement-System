@@ -1,7 +1,7 @@
 @extends('components.layout')
 @section('content')
     <div class="hero-wrap"
-         style="background-image: url('https://images.pexels.com/photos/3285725/pexels-photo-3285725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+         style="background-image: url('http://127.0.0.1:8001/images/hotel_images/{{ $hotel->hotel_image }}');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
@@ -19,7 +19,7 @@
             <div class="col-md-10">
                 @foreach($rooms as $room)
                     <div class="row p-2 bg-white border rounded mt-2">
-                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="#">
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="http://127.0.0.1:8001/images/room_images/{{ $room->room_image }}">
                         </div>
                         <div class="col-md-6 mt-1">
                             <h5>{{$room->room_type}} Room</h5>
@@ -28,17 +28,22 @@
                                         class="fa fa-star"></i><i class="fa fa-star"></i></div>
                                 <span>{{$room->room_number}}</span>
                             </div>
-                            <p class="text-justify text-truncate para mb-0">{{$room->room_description}}<br><br></p>
+                            <p class="text-justify  para mb-0">{{$room->room_description}}<br><br></p>
                         </div>
                         <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                             <div class="d-flex flex-row align-items-center">
                                 <h4 class="mr-1">${{$room->room_price}}</h4>
                             </div>
                             <div class="d-flex flex-column mt-4">
-                                <button class="btn btn-primary btn-sm" type="button"><a class="text-black-50"
-                                                                                        href="{{ route('booking.index', ['slug' => $hotel->slug, 'id' => $room->id]) }}">Booking
-                                        Now</a></button>
-                                <button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist
+                                <button class="btn btn-primary btn-sm" type="button">
+                                    <a class="text-black-50" href="{{ route('booking.index', ['slug' => $hotel->slug, 'id' => $room->id]) }}">
+                                        Booking Now
+                                    </a>
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm mt-2" type="button">
+                                    <a href="{{route('availableDays',$room->id)}}">
+                                    Show Available Day
+                                    </a>
                                 </button>
                             </div>
                         </div>

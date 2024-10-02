@@ -30,12 +30,14 @@ class AboutsController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
-        // Handle the image upload if provided
-        $validatedData['image']= null;
-        if ($request->hasFile('image')) {
-            $validatedData['image'] = $request->file('image')->store('about_images', 'public');
-        }
 
+        $validatedData['image'] = null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('images/about_images'), $file_name, 'public');
+            $validatedData['image'] = $file_name;
+        }
         About::create($validatedData);
 
         return redirect()->route('abouts.index')->with('success', 'About entry created successfully.');
@@ -61,14 +63,17 @@ class AboutsController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
-        // Handle the image upload if provided
-        $validatedData['image']= $about->image; // keep the existing image
         if ($request->hasFile('image')) {
-            // Delete the old image if necessary
-            if ($about->image) {
-                Storage::disk('public')->delete($about->image);
-            }
-            $validatedData['image'] = $request->file('image')->store('about_images', 'public');
+            // New image is uploaded
+            $file = $request->file('image');
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('images/about_images'), $file_name);
+
+            // Update the hotel_image in the validate array
+            $validatedData['image'] = $file_name;
+        } else {
+            // No new image is uploaded, keep the old image
+            $validatedData['image'] = $about->image; // Preserve the old image
         }
 
         // Update the About entry

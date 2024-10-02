@@ -9,8 +9,16 @@ class payments extends Model
 {
     use HasFactory;
      protected $fillable=[
-         'user_id',
-         'booking_id',
+         'user_id' ,
+         'booking_id' ,
+         'booking_id.*' ,
+         'payment_method' ,
+         'payment_type' ,
+         'card_holder' ,
+         'exp_month' ,
+         'exp_year' ,
+         'card_number',
+         'cvc'  ,
          'amount',
          'payment_date',
          'transaction_id'

@@ -43,10 +43,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value); // Or Hash::make($value);
     }
-public  function booking()
-{
-    return $this->hasMany(Booking::class);
-}
+
+    public function booking()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

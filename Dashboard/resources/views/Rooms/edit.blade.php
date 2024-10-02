@@ -23,6 +23,7 @@
                                 <!-- Room Image -->
                                 <div class="mb-4">
                                     <label for="room_image" class="form-label">Room Image</label>
+                                    <img src="{{ asset('images/room_images/' . $room->room_image) }}" alt="Current Image" class="img-fluid mb-2" style="max-width: 300px;" />
                                     <input type="file" id="room_image" name="room_image" class="form-control form-control-lg" />
                                     @error('room_image')
                                     <div class="text-danger">{{ $message }}</div>

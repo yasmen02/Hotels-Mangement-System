@@ -37,18 +37,18 @@ class HotelsController extends Controller
         $validate['hotel_image'] = null;
         if ($request->hasFile('hotel_image')) {
             $file = $request->file('hotel_image');
-            $validate['hotel_image'] = $file->store('hotel_images', 'public');
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('images/hotel_images'), $file_name, 'public');
+            $validate['hotel_image'] = $file_name;
         }
 
         Hotels::create($validate);
         return redirect()->route('hotels.index');
     }
-    public function edit($id){
-        $hotel=Hotels::where('id', $id)->firstOrFail();
+    public function edit(Hotels $hotel){
         return view('Hotels/edit',compact('hotel'));
     }
-    public function update(Request $request, $id){
-        $hotel = Hotels::findOrFail($id);
+    public function update(Request $request, Hotels $hotel){
 
         $validate = request()->validate([
             'name' => 'required',
@@ -58,12 +58,16 @@ class HotelsController extends Controller
             'contact_number' => 'required',
         ]);
         if ($request->hasFile('hotel_image')) {
-            if ($hotel->hotel_image) {
-                Storage::delete('public/hotel_images/' . $hotel->hotel_image);
-            }
-            $validate['hotel_image'] = $request->file('hotel_image')->store('hotel_images', 'public');
+            // New image is uploaded
+            $file = $request->file('hotel_image');
+            $file_name = $file->getClientOriginalName();
+            $file->move(public_path('images/hotel_images'), $file_name);
+
+            // Update the hotel_image in the validate array
+            $validate['hotel_image'] = $file_name;
         } else {
-            $validate['hotel_image'] = $hotel->hotel_image; // Retain the existing image
+            // No new image is uploaded, keep the old image
+            $validate['hotel_image'] = $hotel->hotel_image; // Preserve the old image
         }
 
         $hotel->update($validate);

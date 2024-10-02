@@ -20,13 +20,11 @@ class SessionController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
-//dd(! Auth::attempt($attributes));
         if (!Auth::attempt($attributes)) {
             throw ValidationException::withMessages([
                 'email' => 'Sorry, those credentials do not match.'
             ]);
         }
-
         request()->session()->regenerate();
 
         return redirect('/hotels');

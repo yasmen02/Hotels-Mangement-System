@@ -16,6 +16,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('booking_id')->constrained()->onDelete('cascade');
             $table->decimal('amount', 10, 2);
+            $table->string('payment_method');
+            $table->string('payment_type');
+            $table->string('card_holder');
+            $table->string('card_number');
+            $table->string('cvc');
+            $table->unsignedTinyInteger('exp_month')->nullable();
+            $table->unsignedTinyInteger('exp_year')->nullable();
             $table->timestamp('payment_date');
             $table->string('transaction_id')->unique();
             $table->timestamps();
